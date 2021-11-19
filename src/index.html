@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impala Playground</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Welcome to the Impala Local Playground!</h1>
+        <div class="hotels-list"></div>
+    </div>
+    </div>
+</body>
+<script>
+    function addHotel(hotelData) {
+        const hotelsList = document.querySelector('.hotels-list');
+        const hotel = `
+         <div class="single-hotel" style="background-image: url(${hotelData.images.length ? hotelData.images[0].url : ''})">
+            <h3>${hotelData.name}</h3>
+         </div>
+         
+        `;
+        hotelsList.insertAdjacentHTML('beforeend', hotel);
+    }
+    const myResult = fetch('http://localhost:8000/hotels')
+        .then(data => data.json().then(json => {
+            console.log(json.data);
+            json.data.forEach(hotel => {
+                addHotel(hotel);
+            });
+        }));
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+    html,
+    body {
+        height: 100%;
+        font-family: Questrial;
+        background: #eef2f6;
+    }
+
+    .wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hotels-list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .single-hotel {
+        position: relative;
+        text-align: center;
+        margin: 10px;
+        height: 400px;
+        box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.8);
+        color: white;
+        transition: 600ms all ease-in-out;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        padding: 5px;
+        flex: 0 1 calc(30% - 10px);
+    }
+
+    .single-hotel:hover {
+        box-shadow: inset 0 0 0 500px rgba(0, 0, 0, 0.8);
+        transform: scale(1.1);
+    }
+
+    h1 {
+        color: #351CAC;
+    }
+</style>
+
+</html>

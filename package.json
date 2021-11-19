@@ -1,0 +1,23 @@
+{
+    "name": "impala-local-playground",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GetImpala/impala-local-playground.git"
+    },
+    "dependencies": {
+        "express": "^4.17.1",
+        "node-fetch": "^3.0.0"
+    },
+    "author": "moonclash",
+    "bugs": {
+        "url": "https://github.com/GetImpala/impala-local-playground/issues"
+    },
+    "homepage": "https://github.com/GetImpala/impala-local-playground#readme"
+}
